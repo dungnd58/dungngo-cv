@@ -9,7 +9,7 @@ html(class="no-js", lang="en")
         link(rel="shortcut icon", href="data:image/x-icon;,", type="image/x-icon")
 
         block css
-            link(href="css/styles.css", charset="utf-8", rel="stylesheet")
+            link(href="css/main.css", charset="utf-8", rel="stylesheet")
     body
         p Hello Im Jade! 
         include ./templates/home.jade
@@ -17,7 +17,10 @@ html(class="no-js", lang="en")
 
         block content
             div ok
-            | Plain text can include <strong>html</strong>
+                p.container.plain-text
+                    | Plain text can include <strong>html</strong>
+                span okokokokokok
+            foo/
         block js
-            //script(src="../js/scripts.min.js")
+            script(src="js/main.js")
 

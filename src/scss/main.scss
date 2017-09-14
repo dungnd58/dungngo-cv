@@ -6,3 +6,18 @@
     border-bottom: 1px solid #333;
     padding: 10px;
 }
+
+.plain-text {
+    color: #ccc333;
+    font-weight: 700;
+}
+
+%extend-example {
+    position: relative;
+    display: block;
+    padding: 10px;
+}
+
+span {
+    @extend %extend-example
+}
