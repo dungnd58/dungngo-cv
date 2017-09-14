@@ -16,12 +16,19 @@ gulp.task('jade', function() {
 gulp.task('scss', function(){
     return gulp.src('src/scss/*.scss')
             .pipe(sass().on('error', sass.logError))
-            .pipe(concat('styles.css'))
+            .pipe(concat('main.css'))
             .pipe(uglifyCss({
                 "amxLineLen": 80,
                 "uglyComments": true
             }))
             .pipe(gulp.dest('dist/css'))
+})
+
+gulp.task('scripts', function(){
+    return gulp.src('src/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
 })
 
 gulp.task('clean', function(){
@@ -31,5 +38,5 @@ gulp.task('clean', function(){
 })
 
 gulp.task('default', ['clean'], function() {
-    gulp.start(['jade', 'scss']);
+    gulp.start(['jade', 'scss', 'scripts']);
 })
