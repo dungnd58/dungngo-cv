@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run build:dev",
-    "build:dev": "npm run clean && webpack"
+    "build:dev": "npm run clean && webpack -d --colors --progress --hide-modules"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -29,6 +29,7 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.9.3",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
