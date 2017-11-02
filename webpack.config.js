@@ -3,6 +3,7 @@ var webpack = require('webpack');
 //var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const definePlugin = new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
@@ -23,14 +24,6 @@ module.exports = {
         filename: 'main.js'
     },
     watch: true,
-    plugins: [
-        definePlugin,
-        new UglifyJsPlugin({
-            test: /\.js$/,
-            sourceMap: false,
-            parallel: true
-        })
-    ],
     module: {
         rules: [
             {
@@ -62,6 +55,19 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        definePlugin,
+        new UglifyJsPlugin({
+            test: /\.js$/,
+            sourceMap: false,
+            parallel: true
+        }),
+        new HtmlWebpackPlugin({
+            title: 'My CV',
+            filename: 'index.html',
+            template: 'index.jade'
+        })
+    ],
 }
 
