@@ -11,14 +11,12 @@ html(class="no-js", lang="en")
         block css
             link(href="../dist/css/style.css", charset="utf-8", rel="stylesheet")
     body
-        p Hello Im Jade!
-
         block content
-            div ok
+            div.screen ok
                 p.container.plain-text
                     | Plain text can include <strong>html</strong>
-                span okokokoko
-            foo/
+                div#character.red-square
+            
         block js
             script(src="../dist/js/main.js")
 

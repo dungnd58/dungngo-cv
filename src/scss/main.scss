@@ -1,9 +1,24 @@
+.red-square {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: relative;
+    transition: left 50ms linear;
+}
+
 #main {
     font-size: 20px;
 }
 
+.screen {
+    border: 1px solid #ccc;
+    width: 60%;
+    height: 450px;
+    margin: auto;
+    position: relative;
+}
+
 .container {
-    border-bottom: 1px solid #333;
     padding: 10px;
 }
 
