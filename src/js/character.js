@@ -10,6 +10,10 @@ class Character {
         this.body = document.getElementById("character");
     }
 
+    getBodyLeft() {
+        return this.body.offsetLeft;
+    }
+
     moveToLeft() {
         let _body = this.body;
         _body.style.left = _body.offsetLeft + 25 + "px";
@@ -17,7 +21,8 @@ class Character {
 
     moveToRight() {
         let _body = this.body;
-        _body.style.left = _body.offsetLeft - 25 + "px";
+        let reducer = _body.offsetLeft - 25;
+        _body.style.left = ((reducer <= 0) ? 0 : reducer) + "px";
     }
 
     jumpUpLeft() {}

@@ -7,7 +7,8 @@ class Controller {
             if(e.key == "ArrowDown") {
                 character.moveToLeft();
             } else if (e.key == "ArrowUp") {
-                character.moveToRight();
+                if (character.getBodyLeft() != 0) character.moveToRight();
+                else return;
             } else {
                 return;
             }
