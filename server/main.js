@@ -1,43 +1,45 @@
 const Express = require('express');
 const Port = 3000;
-const Router = Express.Router();
-
 const CustomServer = Express();
+const fs = require('fs');
+var users = [];
 
+//Database
+fs.readFile("server/data.json", {encoding: 'utf8'}, function(err, data){
+    if(err) throw err;
+
+    JSON.parse(data).forEach((user) => {
+        users.push(user);
+    })
+})
 
 //Middlewares
-CustomServer.use('/about', (req, res, next) => {
-    req.chance = Math.random();
-    //next();
-});
-
-//The error handler function should be the last function added with app.use
-CustomServer.use((err, req, res, next) => {
-    console.log("Something broke!");
-    res.status(500).send('Something broke!');
-});
 
 //Router & request handler
 CustomServer.route('/')
     .get((req, res) => {
-        res.json({
-            chance: req.chance
-        })
-        res.status(202).send('Success!')
-    });
+        var buffer = '';
+        users.forEach((user) => {
+            buffer += "<a href='/" + user.name + "'>" + user.name + '</a><br>';
+        });
+        res.send(buffer);
+    })
+    .post((req, res) => {
+        
+        res.end();
+    })
 
-CustomServer.route('/about')
+CustomServer.route('/:username')
     .get((req, res) => {
-        res.json({
-            type: 'about'
-        })
-        res.status(202).send('Success!')
-    });
+        var username = req.params.username;
+        res.send(username);
+    })
 
 //Server listener
 CustomServer.listen(Port, (err) => {
     if(err) {
         return console.log("Error: " + err);
     }
+
     console.log(`Server is listening on ${Port}`);
 });

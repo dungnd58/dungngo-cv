@@ -5,26 +5,36 @@ import '../scss/main.scss'
 import Character from './character.js';
 import Controller from './controller.js';
 
-class Main {
-    constructor() {
-        this.character = null;
-    }
-
-    init() {
-        this.character = new Character();
-        this.controller = new Controller();
-    }
-
-    handleController() {
-        let { controller, character } = this;
-        controller.handle(character);
-    }
-}
-
 (function(){
-    var main = new Main();
-    main.init();
-    main.handleController();
+    var character, controller;
+    
+    var init = () => {
+        character = new Character();
+        controller = new Controller();
+    }
+
+    var handleController = () => {
+        controller.handle(character);
+    };
+
+    var edit = () => {
+        $.ajax('http://localhost:3000/', {
+            method: 'POST',
+            data: {
+                name: "username4",
+                password: "12345678"
+            },
+            success: function(data){
+                console.log(data)
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        })
+    }
+
+    init();
+    handleController();
 }());
 
 

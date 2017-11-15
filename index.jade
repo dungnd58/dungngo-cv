@@ -7,17 +7,14 @@ html(class="no-js", lang="en")
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="shortcut icon", href="data:image/x-icon;,", type="image/x-icon")
-
         block css
             link(href="../dist/css/style.css", charset="utf-8", rel="stylesheet")
+        
     body
         block content
-            div.screen ok
-                p.container.plain-text
-                    | Plain text can include <strong>html</strong>
-                div#character.red-square
-            
+           h1 NodeJs - Express - Jade
+           button(onclick="edit()") Click
+        
         block js
             script(src="https://code.jquery.com/jquery-3.2.1.min.js")
             script(src="../dist/js/main.js")
-
